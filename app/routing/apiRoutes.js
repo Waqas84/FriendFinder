@@ -12,20 +12,20 @@ module.exports = function(app) {
         });
 
         var scoreArray = [];
-        
+
         for (var i = 0; i < friendsList.length; i++) {
             var scoreDifference = 0;
-           
+
             for (var j = 0; j < userScore.length; j++) {
-                
+
                 scoreDifference += Math.abs(parseInt(friendsList[i].scores[j]) - (userScore[j]));
             }
-        
+
             scoreArray.push(scoreDifference);
         }
         var smallestIndex = 0;
 
-       
+
         for (var i = 0; i < scoreArray.length; i++) {
             if (scoreArray[i] <= scoreArray[smallestIndex]) {
                 smallestIndex = i;
@@ -35,8 +35,8 @@ module.exports = function(app) {
         var bestMatch = friendsList[smallestIndex];
         friendsList.push(req.body);
         res.json(bestMatch);
-         res.redirect("/");
+        res.redirect("/");
 
     });
-   
+
 };
